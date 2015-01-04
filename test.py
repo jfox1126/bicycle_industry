@@ -1,11 +1,21 @@
 import random
 
+#Bike class and 6 created 'Bike' objects
 class Bike(object):
   def __init__(self, model, weight, cost):
     self.model = model
     self.weight = weight
     self.cost = cost
 
+model1 = Bike("Model1", 30, 400)
+model2 = Bike("Model2", 25, 500)
+model3 = Bike("Model3", 20, 600)
+model4 = Bike("Model4", 20, 750)
+model5 = Bike("Model5", 18, 1000)
+model6 = Bike("Model6", 16, 1500)
+bike_list = [model1, model2, model3, model4, model5, model6]
+    
+#Bike Shop class and 1 created 'Bike Shop' Object
 class Bike_shop(object):
   def __init__(self, name, margin, initial_inventory):
     self.name = name
@@ -33,7 +43,19 @@ class Bike_shop(object):
   def print_profit(self):
     print self.name + " has made $" + str(self.profit) + " total"
     print ""
+    
+inventory2 = {
+  model1: 1,
+  model2: 1,
+  model3: 1,
+  model4: 1,
+  model5: 1,
+  model6: 1,
+}
 
+jareds = Bike_shop("Jared's", .2, inventory2)
+
+#Customer class and 3 'Customer' Objects
 class Customer(object):
   def __init__(self, name, fund):
     self.name = name
@@ -47,31 +69,12 @@ class Customer(object):
     print self.name + " bought " + bike.model + " and has $" + str(self.fund) + " left in his/her fund!"
     
   def print_affordable(self, store): 
-    print self.name + " has $" + str(self.fund) + " and can buy the following from " + store.name + ":"
+    print customer.name + " has $" + str(customer.fund) + " and can buy the following from " + store.name + ":"
     for bike in store.inventory:
-      if self.fund >= store.inventory[bike]["price"]:
+      if customer.fund >= store.inventory[bike]["price"]:
         self.affordable.append(bike)
         print bike.model + " for $" + str(store.inventory[bike]["price"])
     print ""
-
-model1 = Bike("Model1", 30, 400)
-model2 = Bike("Model2", 25, 500)
-model3 = Bike("Model3", 20, 600)
-model4 = Bike("Model4", 20, 750)
-model5 = Bike("Model5", 18, 1000)
-model6 = Bike("Model6", 16, 1500)
-bike_list = [model1, model2, model3, model4, model5, model6]
-    
-inventory2 = {
-  model1: 1,
-  model2: 1,
-  model3: 1,
-  model4: 1,
-  model5: 1,
-  model6: 1,
-}
-
-jareds = Bike_shop("Jared's", .2, inventory2)
     
 customerA = Customer("Aaron", 500)
 customerB = Customer("Becky", 800)
